@@ -154,3 +154,17 @@ $graph:
         _type: "@id"
       doc: |
         Specifies the process to run.
+
+- name: DockerGpuRequirement
+  type: record
+  inVocab: false
+  extends: cwl:ProcessRequirement
+  fields:
+    class:
+      type: string
+      doc: "Always 'DockerGpuRequirement'"
+      jsonldPredicate:
+        "_id": "@type"
+        "_type": "@vocab"
+    dockerGPU:
+      type: boolean
