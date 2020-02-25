@@ -92,6 +92,7 @@ _logger_validation_warnings.addFilter(
 
 supportedProcessRequirements = [
     "DockerRequirement",
+    "DockerGpuRequirement",
     "SchemaDefRequirement",
     "EnvVarRequirement",
     "ScatterFeatureRequirement",
@@ -978,7 +979,7 @@ hints:
                         plain_hint,
                         strict=strict,
                     )
-                elif r["class"] in ("NetworkAccess", "LoadListingRequirement"):
+                elif r["class"] in ("NetworkAccess", "LoadListingRequirement", "DockerGpuRequirement"):
                     pass
                 else:
                     _logger.info(str(sl.makeError("Unknown hint %s" % (r["class"]))))

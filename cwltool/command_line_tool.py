@@ -471,6 +471,7 @@ class CommandLineTool(Process):
 
             interesting = {
                 "DockerRequirement",
+                "DockerGpuRequirement",
                 "EnvVarRequirement",
                 "InitialWorkDirRequirement",
                 "ShellCommandRequirement",
@@ -697,6 +698,9 @@ class CommandLineTool(Process):
             j.outdir = builder.outdir
             j.tmpdir = builder.tmpdir
             j.stagedir = builder.stagedir
+
+        dockerGpuReq, _ = self.get_requirement("DockerGpuRequirement")
+        j.docker_gpu_flag = (dockerGpuReq is not None)
 
         inplaceUpdateReq, _ = self.get_requirement("InplaceUpdateRequirement")
         if inplaceUpdateReq is not None:
