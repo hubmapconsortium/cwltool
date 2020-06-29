@@ -374,6 +374,8 @@ class SingularityCommandLineJob(ContainerCommandLineJob):
             "--pid",
             "--ipc",
         ]
+        if getattr(self, 'docker_gpu_flag', False):
+            runtime.append('--nv')
         if _singularity_supports_userns():
             runtime.append("--userns")
         if is_version_3_1_or_newer():
